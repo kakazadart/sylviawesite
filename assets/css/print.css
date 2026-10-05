@@ -1,0 +1,58 @@
+/* Print-friendly certificate and dashboard output */
+@page {
+    size: A4;
+    margin: 1cm;
+}
+
+@media print {
+    .sidebar,
+    .header,
+    .menu-button,
+    .print-button,
+    .navigation,
+    .public-navigation,
+    .certificate-toolbar,
+    .certificate-note,
+    .admin-search-form,
+    .admin-stat-cards,
+    .admin-context-label,
+    .header-role-badge,
+    .alumni-search-form,
+    .notification-toolbar,
+    .form-actions,
+    .modal {
+        display: none;
+    }
+
+    body,
+    .dashboard-page,
+    .certificate-page,
+    .main-content {
+        background-color: white;
+    }
+
+    .dashboard-layout {
+        display: block;
+    }
+
+    .main-content {
+        padding: 0;
+    }
+
+    .dashboard-section,
+    .content-panel,
+    .clearance-panel,
+    .dashboard-card {
+        box-shadow: none;
+    }
+
+    .certificate-page {
+        padding: 0;
+    }
+
+    .certificate {
+        max-width: none;
+        border-width: 10px;
+        box-shadow: none;
+    }
+}

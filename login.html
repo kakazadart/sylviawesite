@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign in to the Kiriri Women's University of Science &amp; Technology Clear Path portal">
+    <title>Clear Path Login | Kiriri Women's University of Science &amp; Technology</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=3">
+    <script src="assets/js/state.js?v=3" defer></script>
+    <script src="assets/js/main.js?v=3" defer></script>
+    <script src="assets/js/auth.js?v=3" defer></script>
+    <script src="assets/js/validation.js?v=3" defer></script>
+    <script src="assets/js/forms.js?v=3" defer></script>
+</head>
+<body class="login-page">
+    <main class="login-box login-box-wide">
+        <div class="login-logo">
+            <div class="brand-text" aria-hidden="true">KIRIRI</div>
+            <p>Clear Path clearance portal</p>
+        </div>
+
+        <h1 class="login-title">Welcome back</h1>
+        <p class="login-subtitle">Choose your role and sign in to continue.</p>
+
+        <form class="login-form" id="loginForm" method="post" action="" novalidate>
+            <div class="form-group">
+                <label for="loginRole">Account role</label>
+                <select class="form-control" id="loginRole" name="loginRole" required>
+                    <option value="student">Student</option>
+                    <option value="department">Department Admin</option>
+                    <option value="super">Super Admin</option>
+                    <option value="alumni">Alumni</option>
+                </select>
+                <span class="form-error">Choose an account role.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="identifier" id="identifierLabel">Registration number</label>
+                <input class="form-control" id="identifier" name="identifier" type="text" maxlength="40" placeholder="Enter your registration number" autocomplete="username" required>
+                <span class="form-error">Enter your registration number or staff ID.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-with-action">
+                    <input class="form-control" id="password" name="password" type="password" minlength="6" maxlength="128" placeholder="Enter your password" autocomplete="current-password" required>
+                    <button class="input-action" type="button" data-toggle-password="password" aria-label="Show password" aria-pressed="false">Show</button>
+                </div>
+                <span class="form-error">Enter a password with at least 6 characters.</span>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input id="rememberStudent" name="rememberStudent" type="checkbox">
+                    <label for="rememberStudent">Keep me signed in on this device</label>
+                </div>
+            </div>
+
+            <button class="button button-primary button-block" type="submit">Sign in securely</button>
+            <p class="form-help" id="loginMessage" aria-live="polite"></p>
+        </form>
+
+        <div class="auth-switch" id="authSwitch">
+            <p>New student?</p>
+            <button class="text-button" id="registerToggle" type="button" aria-controls="registerPanel" aria-expanded="false">Create an account</button>
+        </div>
+
+        <button class="text-button login-reset-toggle" id="resetToggle" type="button">Forgot your password?</button>
+
+        <section class="reset-panel" id="resetPanel" hidden>
+            <h2>Reset password</h2>
+            <p>Verify your security answer before creating a temporary password.</p>
+            <form id="resetForm" method="post" action="" novalidate>
+                <div class="form-group">
+                    <label for="resetIdentifier">Registration number or staff ID</label>
+                    <input class="form-control" id="resetIdentifier" name="resetIdentifier" type="text" maxlength="40" required>
+                    <span class="form-error">Enter your account ID.</span>
+                </div>
+                <div class="form-group">
+                    <label for="securityAnswer">Security answer</label>
+                    <input class="form-control" id="securityAnswer" name="securityAnswer" type="text" maxlength="100" placeholder="Enter your security answer" required>
+                    <span class="form-error">Enter the answer used during registration.</span>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New password</label>
+                    <input class="form-control" id="newPassword" name="newPassword" type="password" minlength="6" maxlength="128" required>
+                    <span class="form-error">Use at least 6 characters.</span>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm new password</label>
+                    <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" minlength="6" maxlength="128" data-match="newPassword" required>
+                    <span class="form-error">Passwords must match.</span>
+                </div>
+                <p class="form-help" id="resetMessage" aria-live="polite"></p>
+                <button class="button button-secondary button-block" type="submit">Update password</button>
+            </form>
+        </section>
+
+        <section class="register-panel" id="registerPanel" aria-labelledby="registerTitle" hidden>
+            <h2 id="registerTitle">Create a student account</h2>
+            <p>Register once, verify your email, and start your four-department clearance checklist.</p>
+            <form class="register-form" id="registerForm" method="post" action="" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="registerFullName">Full name</label>
+                        <input class="form-control" id="registerFullName" name="registerFullName" type="text" minlength="2" maxlength="120" autocomplete="name" required>
+                        <span class="form-error">Enter your full name.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerIdentifier">Registration number</label>
+                        <input class="form-control" id="registerIdentifier" name="registerIdentifier" type="text" minlength="4" maxlength="40" pattern="[A-Za-z0-9-]{4,40}" placeholder="e.g. KUM-26-0123" autocomplete="username" required>
+                        <span class="form-error">Use 4 to 40 letters, numbers, or hyphens.</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="registerEmail">Email address</label>
+                        <input class="form-control" id="registerEmail" name="registerEmail" type="email" maxlength="120" autocomplete="email" required>
+                        <span class="form-error">Enter a valid email address.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPhone">Phone number <span class="muted-text">(optional)</span></label>
+                        <input class="form-control" id="registerPhone" name="registerPhone" type="tel" maxlength="30" autocomplete="tel">
+                        <span class="form-error">Enter a valid phone number or leave it blank.</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="registerDegree">Programme</label>
+                        <select class="form-control" id="registerDegree" name="registerDegree" required>
+                            <option value="">Select programme</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Economics">Economics</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Biochemistry">Biochemistry</option>
+                        </select>
+                        <span class="form-error">Choose your programme.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerGraduationYear">Graduation year</label>
+                        <input class="form-control" id="registerGraduationYear" name="registerGraduationYear" type="number" min="2000" max="2100" step="1" required>
+                        <span class="form-error">Enter a valid graduation year.</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <div class="input-with-action">
+                            <input class="form-control" id="registerPassword" name="registerPassword" type="password" minlength="6" maxlength="128" autocomplete="new-password" required>
+                            <button class="input-action" type="button" data-toggle-password="registerPassword" aria-label="Show password" aria-pressed="false">Show</button>
+                        </div>
+                        <span class="form-error">Use a password with at least 6 characters.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerConfirmPassword">Confirm password</label>
+                        <input class="form-control" id="registerConfirmPassword" name="registerConfirmPassword" type="password" minlength="6" maxlength="128" data-match="registerPassword" autocomplete="new-password" required>
+                        <span class="form-error">Passwords must match.</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerSecurityAnswer">Security answer</label>
+                    <input class="form-control" id="registerSecurityAnswer" name="registerSecurityAnswer" type="text" minlength="2" maxlength="100" placeholder="Choose an answer you can remember" autocomplete="off" required>
+                    <span class="form-error">Enter a security answer between 2 and 100 characters.</span>
+                </div>
+
+                <p class="form-help" id="registerMessage" aria-live="polite"></p>
+                <div class="form-actions">
+                    <button class="button button-primary" type="submit">Create account</button>
+                    <button class="button button-secondary" id="registerBack" type="button">Back to sign in</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="verification-panel" id="verifyPanel" aria-labelledby="verifyTitle" hidden>
+            <h2 id="verifyTitle">Verify your email</h2>
+            <p id="verifyDescription">Enter the 6-digit code sent to your email address.</p>
+            <form id="verifyForm" method="post" action="" novalidate>
+                <input id="verifyIdentifier" name="identifier" type="hidden">
+                <div class="form-group">
+                    <span class="otp-label" id="otpLabel">Verification code</span>
+                    <div class="otp-inputs" id="otpInputs" role="group" aria-labelledby="otpLabel">
+                        <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="one-time-code" aria-label="Verification digit 1">
+                        <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" aria-label="Verification digit 2">
+                        <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" aria-label="Verification digit 3">
+                        <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" aria-label="Verification digit 4">
+                        <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" aria-label="Verification digit 5">
+                        <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" aria-label="Verification digit 6">
+                    </div>
+                    <input class="form-control" id="verificationCode" name="code" type="hidden" inputmode="numeric" autocomplete="one-time-code">
+                    <p class="form-help">Enter the 6 digits from the code we emailed you.</p>
+                    <span class="form-error">Enter the 6-digit verification code.</span>
+                </div>
+                <p class="form-help" id="verifyMessage" aria-live="polite"></p>
+                <div class="form-actions">
+                    <button class="button button-primary" type="submit">Verify account</button>
+                    <button class="button button-secondary" id="resendCode" type="button">Resend code</button>
+                    <button class="text-button" id="verifyBack" type="button">Back to sign in</button>
+                </div>
+            </form>
+        </section>
+
+        <details class="demo-accounts">
+            <summary>View demo accounts</summary>
+            <p class="form-help">This prototype uses local demo data. Credentials stay in this browser only.</p>
+            <div class="demo-account-list">
+                <button class="button button-light button-small" type="button" data-demo-account="KUM-24-0187" data-demo-role="student" data-demo-password="student123">Student demo</button>
+                <button class="button button-light button-small" type="button" data-demo-account="LIB-STAFF-01" data-demo-role="department" data-demo-password="staff123">Library admin demo</button>
+                <button class="button button-light button-small" type="button" data-demo-account="FIN-STAFF-01" data-demo-role="department" data-demo-password="staff123">Finance admin demo</button>
+                <button class="button button-light button-small" type="button" data-demo-account="CS-STAFF-01" data-demo-role="department" data-demo-password="staff123">Department head demo</button>
+                <button class="button button-light button-small" type="button" data-demo-account="HOST-STAFF-01" data-demo-role="department" data-demo-password="staff123">Hostels admin demo</button>
+                <button class="button button-light button-small" type="button" data-demo-account="SUPER-001" data-demo-role="super" data-demo-password="admin123">Super admin demo</button>
+                <button class="button button-light button-small" type="button" data-demo-account="KUM-24-0214" data-demo-role="alumni" data-demo-password="alumni123">Alumni demo</button>
+            </div>
+        </details>
+
+        <a class="login-back" href="index.html">Back to homepage</a>
+    </main>
+</body>
+</html>

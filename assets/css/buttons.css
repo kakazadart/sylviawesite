@@ -1,0 +1,120 @@
+/* Reusable buttons */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.button:hover {
+    color: white;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.button-primary {
+    background-color: indigo;
+    color: white;
+}
+
+.button-primary:hover {
+    background-color: purple;
+}
+
+.button-success {
+    background-color: green;
+    color: white;
+}
+
+.button-success:hover {
+    background-color: teal;
+}
+
+.button-warning {
+    background-color: orange;
+    color: white;
+}
+
+.button-warning:hover {
+    background-color: orange;
+}
+
+.button-danger {
+    background-color: red;
+    color: white;
+}
+
+.button-danger:hover {
+    background-color: red;
+}
+
+.button-secondary {
+    background-color: orange;
+    color: white;
+}
+
+.button-secondary:hover {
+    background-color: indigo;
+}
+
+.button-light {
+    border-color: lightgray;
+    background-color: white;
+    color: indigo;
+}
+
+.button-light:hover {
+    background-color: whitesmoke;
+}
+
+.button-small {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+}
+
+.button-block {
+    width: 100%;
+}
+
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    color: darkslategray;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.icon-button:hover {
+    background-color: whitesmoke;
+    color: indigo;
+}
+
+.text-button {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    color: indigo;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.text-button:hover {
+    color: purple;
+}

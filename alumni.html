@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kiriri Women's University of Science &amp; Technology alumni directory and profile">
+    <title>Alumni Directory | Kiriri Women's University of Science &amp; Technology Clear Path</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    <script src="assets/js/state.js?v=2" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/auth.js?v=2" defer></script>
+    <script src="assets/js/sidebar.js" defer></script>
+    <script src="assets/js/validation.js" defer></script>
+    <script src="assets/js/forms.js?v=2" defer></script>
+    <script src="assets/js/alumni.js" defer></script>
+</head>
+<body class="dashboard-page" data-protected-page="alumni">
+    <a class="skip-link" href="#mainContent">Skip to main content</a>
+
+    <header class="header">
+        <div class="header-logo">
+            <a href="alumni.html" aria-label="Alumni directory home">
+                <span class="brand-text" aria-hidden="true">KIRIRI</span>
+                <span>
+                    <span class="header-title">Clear Path Alumni</span>
+                    <span class="header-caption" data-current-role>Alumni directory</span>
+                </span>
+            </a>
+        </div>
+        <div class="header-actions">
+            <div class="header-user">
+                <strong data-current-name>Alumnus</strong>
+                <span data-current-id>Alumni account</span>
+            </div>
+            <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="sidebar">
+                <span aria-hidden="true">☰</span>
+                <span class="sr-only">Open navigation</span>
+            </button>
+            <button class="button button-light button-small" id="logoutButton" type="button">Log out</button>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <p class="sidebar-heading">Alumni workspace</p>
+            <nav class="sidebar-navigation" aria-label="Alumni navigation">
+                <a class="active" href="#directory"><span class="nav-icon" aria-hidden="true">D</span>Find alumni</a>
+                <a href="#my-profile"><span class="nav-icon" aria-hidden="true">P</span>My profile</a>
+            </nav>
+            <div class="sidebar-footer">
+                <strong>Stay connected</strong>
+                <p>Keep your employment details and professional links current for fellow graduates.</p>
+            </div>
+        </aside>
+        <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+        <main class="main-content" id="mainContent">
+            <div class="notification warning" id="sessionWarning" hidden>
+                <div><p>Session warning</p><small>You will be signed out soon because of inactivity.</small></div>
+            </div>
+
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">Graduate community</p>
+                    <h1>Alumni directory</h1>
+                    <p>Find fellow graduates by name, graduation year, or course.</p>
+                </div>
+                <a class="button button-light" href="index.html">Public homepage</a>
+            </div>
+
+            <section class="dashboard-section" id="directory">
+                <div class="content-panel">
+                    <div class="section-heading">
+                        <div>
+                            <h2>Search the directory</h2>
+                            <p>Use any one field or combine all three.</p>
+                        </div>
+                        <span class="status-review" id="alumniResultCount" role="status" aria-live="polite">0 results</span>
+                    </div>
+
+                    <form class="admin-search-form alumni-search-form" id="alumniSearchForm" novalidate>
+                        <div class="form-group">
+                            <label for="alumniName">Name</label>
+                            <input class="form-control" id="alumniName" name="alumniName" type="search" placeholder="Search by name">
+                        </div>
+                        <div class="form-group">
+                            <label for="alumniYear">Graduation year</label>
+                            <select class="form-control" id="alumniYear" name="alumniYear">
+                                <option value="">All years</option>
+                                <option value="2026">2026</option>
+                                <option value="2019">2019</option>
+                                <option value="2028">2028</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="alumniCourse">Course</label>
+                            <input class="form-control" id="alumniCourse" name="alumniCourse" type="search" placeholder="Search by course">
+                        </div>
+                        <button class="button button-primary" type="submit">Search directory</button>
+                    </form>
+
+                    <div class="table-container">
+                        <table class="data-table">
+                            <caption class="sr-only">Kiriri Women's University of Science &amp; Technology alumni directory</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Course</th>
+                                    <th scope="col">Graduated</th>
+                                    <th scope="col">Employment</th>
+                                    <th scope="col">Profile</th>
+                                </tr>
+                            </thead>
+                            <tbody id="alumniTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="empty-state" id="alumniEmpty" hidden>
+                        <strong>No alumni found.</strong>
+                        <p>Try a broader name, year, or course search.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="my-profile" data-alumni-profile-section>
+                <div class="content-panel">
+                    <div class="section-heading">
+                        <div>
+                            <h2>Update my alumni profile</h2>
+                            <p>Your changes are visible to signed-in alumni users.</p>
+                        </div>
+                    </div>
+                    <form id="alumniProfileForm" method="post" action="" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="alumniPhone">Phone number</label>
+                                <input class="form-control" id="alumniPhone" name="phone" type="tel" maxlength="30" required>
+                                <span class="form-error">Enter your phone number.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="employmentStatus">Employment status</label>
+                                <input class="form-control" id="employmentStatus" name="employmentStatus" type="text" maxlength="100" required>
+                                <span class="form-error">Enter your current status.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="professionalLinks">Professional links</label>
+                            <input class="form-control" id="professionalLinks" name="professionalLinks" type="url" maxlength="300" placeholder="Add a professional profile link">
+                            <span class="form-help">Use a complete link beginning with https://.</span>
+                            <span class="form-error">Enter a valid URL beginning with https://.</span>
+                        </div>
+                        <p class="form-help" id="alumniMessage" aria-live="polite"></p>
+                        <div class="form-actions">
+                            <button class="button button-primary" type="submit">Save alumni profile</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

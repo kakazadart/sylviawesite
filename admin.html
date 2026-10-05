@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kiriri Women's University of Science &amp; Technology clearance administration workspace">
+    <title>Clearance Administration | Kiriri Women's University of Science &amp; Technology</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    <script src="assets/js/state.js?v=2" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/auth.js?v=2" defer></script>
+    <script src="assets/js/sidebar.js" defer></script>
+    <script src="assets/js/validation.js" defer></script>
+    <script src="assets/js/reports.js" defer></script>
+    <script src="assets/js/notifications.js" defer></script>
+    <script src="assets/js/admin.js?v=2" defer></script>
+</head>
+<body class="dashboard-page" data-protected-page="admin">
+    <a class="skip-link" href="#mainContent">Skip to main content</a>
+
+    <header class="header">
+        <div class="header-logo">
+            <a href="admin.html" aria-label="Clearance administration home">
+                <span class="brand-text" aria-hidden="true">KIRIRI</span>
+                <span>
+                    <span class="header-title">Clear Path Administration</span>
+                    <span class="header-caption" data-current-role>Secure clearance workspace</span>
+                </span>
+            </a>
+        </div>
+        <div class="header-actions">
+            <div class="header-user">
+                <strong data-current-name>Clearance Officer</strong>
+                <span data-current-id>Staff account</span>
+            </div>
+            <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="sidebar">
+                <span aria-hidden="true">☰</span>
+                <span class="sr-only">Open navigation</span>
+            </button>
+            <button class="button button-light button-small" id="logoutButton" type="button">Log out</button>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <p class="sidebar-heading">Administration</p>
+            <nav class="sidebar-navigation" aria-label="Administration navigation">
+                <a class="active" href="#queue"><span class="nav-icon" aria-hidden="true">Q</span>Approval queue</a>
+                <a href="#requests"><span class="nav-icon" aria-hidden="true">I</span>Requests</a>
+                <a href="#reports"><span class="nav-icon" aria-hidden="true">R</span>Reports</a>
+                <a href="#audit"><span class="nav-icon" aria-hidden="true">A</span>Audit trail</a>
+                <a href="#settings" id="settingsNavigation"><span class="nav-icon" aria-hidden="true">S</span>System settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <strong>Security reminder</strong>
+                <p>Confirm the student record and outstanding dues before approving a department badge.</p>
+            </div>
+        </aside>
+        <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+        <main class="main-content" id="mainContent">
+            <div class="notification warning" id="sessionWarning" hidden>
+                <div><p>Session warning</p><small>You will be signed out soon because of inactivity.</small></div>
+            </div>
+
+            <div class="notification-area" id="adminNotifications" aria-live="polite">
+                <div class="notification-toolbar">
+                    <p>Administrative updates <span class="notification-count" data-unread-count>0</span></p>
+                    <button class="text-button" id="markAllReadButton" type="button">Mark all as read</button>
+                </div>
+                <div class="content-panel notification-list" id="notificationList"></div>
+            </div>
+
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">Protected administration workspace</p>
+                    <h1>Clearance control centre</h1>
+                    <p>Review pending students, record decisions, and monitor the full clearance picture.</p>
+                </div>
+                <div class="header-role-badge" data-current-role>Department Admin</div>
+            </div>
+
+            <section class="dashboard-section" id="queue">
+                <div class="admin-context-panel">
+                    <div>
+                        <h2 id="queueTitle">Your approval queue</h2>
+                        <p id="queueDescription">Only requests waiting for your office are shown.</p>
+                    </div>
+                    <div class="admin-context-label" id="adminDepartmentLabel">Department scope</div>
+                </div>
+
+                <form class="admin-search-form" id="adminSearchForm" novalidate>
+                    <div class="form-group">
+                        <label for="adminSearch">Search students</label>
+                        <input class="form-control" id="adminSearch" name="adminSearch" type="search" placeholder="Name or registration number">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminStatusFilter">Student status</label>
+                        <select class="form-control" id="adminStatusFilter" name="adminStatusFilter">
+                             <option value="all">All statuses</option>
+                             <option value="active">Active</option>
+                        </select>
+                    </div>
+                    <button class="button button-primary" type="submit">Search queue</button>
+                </form>
+
+                <div class="dashboard-cards admin-stat-cards">
+                    <article class="dashboard-card">
+                        <div class="dashboard-card-top"><h3>Queue total</h3><span class="card-icon" aria-hidden="true">Q</span></div>
+                        <span class="number" id="adminQueueTotal">0</span>
+                        <span class="card-label">Students in scope</span>
+                    </article>
+                    <article class="dashboard-card">
+                        <div class="dashboard-card-top"><h3>Pending</h3><span class="card-icon yellow" aria-hidden="true">P</span></div>
+                        <span class="number" id="adminPendingTotal">0</span>
+                        <span class="card-label">Need a decision</span>
+                    </article>
+                    <article class="dashboard-card">
+                        <div class="dashboard-card-top"><h3>Rejected</h3><span class="card-icon gray" aria-hidden="true">!</span></div>
+                        <span class="number" id="adminFlaggedTotal">0</span>
+                        <span class="card-label">Rejection feedback required</span>
+                    </article>
+                    <article class="dashboard-card">
+                        <div class="dashboard-card-top"><h3>Cleared</h3><span class="card-icon" aria-hidden="true">C</span></div>
+                        <span class="number" id="adminClearedTotal">0</span>
+                        <span class="card-label" id="clearedCardLabel">Fully cleared records</span>
+                    </article>
+                </div>
+
+                <div class="content-panel admin-table-panel">
+                    <div class="table-toolbar">
+                        <div>
+                            <h2>Students requiring attention</h2>
+                            <p>Open a record to review each mandatory department.</p>
+                        </div>
+                        <span class="status-review" id="queueResultLabel" role="status" aria-live="polite">0 results</span>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <caption class="sr-only">Students requiring clearance review</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Student</th>
+                                    <th scope="col">Programme</th>
+                                    <th scope="col">Progress</th>
+                                    <th scope="col">Office status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminQueueBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="empty-state" id="adminQueueEmpty" hidden>
+                        <strong>No students match this search.</strong>
+                        <p>Try a different name, registration number, or status.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="requests">
+                <div class="section-heading">
+                    <div>
+                        <h2>Student requests</h2>
+                        <p>Review document and information requests submitted from the student workspace.</p>
+                    </div>
+                    <span class="status-review" id="requestResultLabel" role="status" aria-live="polite">0 results</span>
+                </div>
+                <form class="admin-search-form request-search-form" id="adminRequestSearchForm" novalidate>
+                    <div class="form-group">
+                        <label for="adminRequestSearch">Search requests</label>
+                        <input class="form-control" id="adminRequestSearch" name="adminRequestSearch" type="search" placeholder="Student or request ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminRequestStatus">Request status</label>
+                        <select class="form-control" id="adminRequestStatus" name="adminRequestStatus">
+                            <option value="all">All requests</option>
+                            <option value="pending">Pending</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <button class="button button-primary" type="submit">Filter requests</button>
+                </form>
+                <div class="content-panel admin-table-panel">
+                    <div class="table-container">
+                        <table class="data-table request-table">
+                            <caption class="sr-only">Student clearance requests</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Student</th>
+                                    <th scope="col">Request</th>
+                                    <th scope="col">Details</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminRequestBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="empty-state" id="adminRequestEmpty" hidden>
+                        <strong>No requests match this queue.</strong>
+                        <p>New student requests will appear here.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="reports">
+                <div class="section-heading">
+                    <div>
+                        <h2>Clearance reports</h2>
+                        <p id="reportDescription">View a summary table or export the current records.</p>
+                    </div>
+                    <div class="form-actions">
+                        <button class="button button-light button-small" type="button" data-print-report>Print / Save PDF</button>
+                        <button class="button button-secondary button-small" type="button" data-download-report="csv">Download CSV</button>
+                    </div>
+                </div>
+
+                <div class="content-panel">
+                    <div class="table-container">
+                        <table class="data-table report-table">
+                            <caption class="sr-only">Scoped clearance report</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Registration</th>
+                                    <th scope="col">Student</th>
+                                    <th scope="col">Programme</th>
+                                    <th scope="col" id="reportProgressHeading">Progress</th>
+                                    <th scope="col" id="reportStatusHeading">Overall status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reportTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="audit">
+                <div class="content-panel">
+                    <div class="section-heading">
+                        <div>
+                            <h2>Audit trail</h2>
+                            <p>Every staff decision is recorded with the responsible officer and time.</p>
+                        </div>
+                        <span class="status-review">Read only</span>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <caption class="sr-only">Scoped clearance audit trail</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Staff member</th>
+                                    <th scope="col">Student</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="auditTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="settings">
+                <div class="content-panel admin-settings-panel">
+                    <div class="section-heading">
+                        <div>
+                            <h2>System settings</h2>
+                            <p>Super admin controls for this local demonstration.</p>
+                        </div>
+                    </div>
+                    <div class="settings-grid">
+                        <div class="setting-item"><strong>Mandatory checklist</strong><span>Library, Finance, Department Head, and Hostels are active.</span></div>
+                        <div class="setting-item"><strong>Session timeout</strong><span>15 minutes of inactivity before automatic sign out.</span></div>
+                        <div class="setting-item"><strong>Audit logging</strong><span>Approval, rejection, profile, and archive actions are recorded.</span></div>
+                    </div>
+                    <div class="form-actions">
+                        <button class="button button-danger button-small" id="resetDemoButton" type="button">Reset demo data</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="reviewModalTitle" aria-hidden="true">
+        <div class="modal-content review-modal-content">
+            <div class="modal-header">
+                <div>
+                    <p class="eyebrow">Clearance decision</p>
+                    <h2 id="reviewModalTitle">Review student record</h2>
+                    <p id="reviewStudentSummary"></p>
+                </div>
+                <button class="icon-button modal-close" type="button" data-close-review aria-label="Close review">×</button>
+            </div>
+
+            <div class="review-checklist" id="reviewChecklist"></div>
+
+            <div class="form-group">
+                <label for="reviewDepartment">Department decision</label>
+                <select class="form-control" id="reviewDepartment"></select>
+                <span class="form-error">Choose a department.</span>
+            </div>
+
+            <div class="review-feedback" id="reviewFeedback" hidden>
+                <strong>Student feedback</strong>
+                <p id="reviewFeedbackText"></p>
+            </div>
+
+            <form id="reviewRejectForm" method="post" action="" novalidate>
+                <div class="form-group">
+                    <label for="rejectionReason">Reason for flagging</label>
+                    <textarea class="form-control" id="rejectionReason" name="rejectionReason" maxlength="500" placeholder="Explain what the student must correct." required></textarea>
+                    <span class="form-error">A comment is required when flagging a request.</span>
+                </div>
+                <div class="modal-footer">
+                    <button class="button button-light" type="button" data-close-review>Close</button>
+                    <button class="button button-warning" type="submit">Reject request</button>
+                    <button class="button button-success" id="approveButton" type="button">Approve and clear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

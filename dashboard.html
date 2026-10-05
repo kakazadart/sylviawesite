@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kiriri Women's University of Science &amp; Technology student clearance dashboard">
+    <title>Student Dashboard | Kiriri Women's University of Science &amp; Technology Clear Path</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    <script src="assets/js/state.js?v=2" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/auth.js?v=2" defer></script>
+    <script src="assets/js/sidebar.js" defer></script>
+    <script src="assets/js/dashboard.js" defer></script>
+    <script src="assets/js/clearance.js" defer></script>
+    <script src="assets/js/notifications.js" defer></script>
+    <script src="assets/js/validation.js" defer></script>
+    <script src="assets/js/forms.js?v=2" defer></script>
+</head>
+<body class="dashboard-page" data-protected-page="student">
+    <a class="skip-link" href="#mainContent">Skip to main content</a>
+
+    <header class="header">
+        <div class="header-logo">
+            <a href="dashboard.html" aria-label="Student dashboard home">
+                <span class="brand-text" aria-hidden="true">KIRIRI</span>
+                <span>
+                    <span class="header-title">Clear Path Student Portal</span>
+                    <span class="header-caption" data-current-role>Student dashboard</span>
+                </span>
+            </a>
+        </div>
+        <div class="header-actions">
+            <div class="header-user">
+                <strong data-current-name>Student</strong>
+                <span data-current-id>Student account</span>
+            </div>
+            <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="sidebar">
+                <span aria-hidden="true">☰</span>
+                <span class="sr-only">Open navigation</span>
+            </button>
+            <button class="button button-light button-small" id="logoutButton" type="button">Log out</button>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <p class="sidebar-heading">Student workspace</p>
+            <nav class="sidebar-navigation" aria-label="Student navigation">
+                <a class="active" href="#overview"><span class="nav-icon" aria-hidden="true">O</span>Overview</a>
+                <a href="#clearance"><span class="nav-icon" aria-hidden="true">C</span>My checklist</a>
+                <a href="#notifications"><span class="nav-icon" aria-hidden="true">N</span>Notifications <span class="notification-count" data-unread-count>0</span></a>
+                <a href="payments.html"><span class="nav-icon" aria-hidden="true">K</span>My fees</a>
+                <a href="#requests"><span class="nav-icon" aria-hidden="true">I</span>My requests</a>
+                <a href="#profile"><span class="nav-icon" aria-hidden="true">P</span>My profile</a>
+                <a href="alumni.html"><span class="nav-icon" aria-hidden="true">D</span>Alumni directory</a>
+            </nav>
+            <div class="sidebar-footer">
+                <strong>Need help?</strong>
+                <p>Contact the Student Records Office if a department update needs more time.</p>
+            </div>
+        </aside>
+        <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+        <main class="main-content" id="mainContent">
+            <div class="notification warning" id="sessionWarning" hidden>
+                <div><p>Session warning</p><small>You will be signed out soon because of inactivity.</small></div>
+            </div>
+
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">Student dashboard</p>
+                    <h1>Welcome, <span data-student-name>Student</span></h1>
+                    <p>Track your four mandatory department clearances from one place.</p>
+                </div>
+                <button class="button button-secondary print-button" id="printPageButton" type="button">Print summary</button>
+            </div>
+
+            <div class="notification info" id="firstLoginNotice" hidden>
+                <div>
+                    <p>Complete your student profile to begin.</p>
+                    <small>Add your email, phone number, and degree programme. Your checklist has already been generated.</small>
+                </div>
+                <a class="button button-light button-small" href="#profile">Complete profile</a>
+            </div>
+
+            <div class="notification success" id="alumniBanner" hidden>
+                <div>
+                    <p>Congratulations, your clearance is complete.</p>
+                    <small>Your profile was automatically archived in the alumni directory.</small>
+                </div>
+                <a class="button button-light button-small" href="alumni.html">Open alumni directory</a>
+            </div>
+
+            <div class="notification-area" id="notifications" aria-live="polite">
+                <div class="notification-toolbar">
+                    <p>Latest clearance updates <span class="notification-count" data-unread-count>0</span></p>
+                    <button class="text-button" id="markAllReadButton" type="button">Mark all as read</button>
+                </div>
+                <div class="content-panel notification-list" id="notificationList"></div>
+            </div>
+
+            <section class="dashboard-section" id="overview">
+                <div class="welcome-panel">
+                    <div>
+                        <h2>Your clear path at a glance</h2>
+                        <p>Every cleared department increases your overall progress automatically.</p>
+                    </div>
+                    <div class="welcome-date">
+                        <span>Today</span>
+                        <strong id="currentDate">25 Sep 2026</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section" aria-labelledby="overviewHeading">
+                <div class="section-heading">
+                    <div>
+                        <h2 id="overviewHeading">Clearance summary</h2>
+                        <p data-student-id>KUM-24-0187</p>
+                    </div>
+                </div>
+                <div class="dashboard-cards">
+                    <article class="dashboard-card">
+                        <div class="dashboard-card-top"><h3>Overall progress</h3><span class="card-icon" aria-hidden="true">%</span></div>
+                        <span class="number" data-metric="progress">0%</span>
+                        <span class="card-label">Clearance complete</span>
+                        <span class="trend success">Live calculation</span>
+                    </article>
+                    <article class="dashboard-card">
+                        <div class="dashboard-card-top"><h3>Pending departments</h3><span class="card-icon yellow" aria-hidden="true">P</span></div>
+                        <span class="number" data-metric="pending">0</span>
+                        <span class="card-label">Waiting for review</span>
+                        <span class="trend warning">Action may be needed</span>
+                    </article>
+                    <article class="dashboard-card">
+                        <div class="dashboard-card-top"><h3>Cleared departments</h3><span class="card-icon" aria-hidden="true">C</span></div>
+                        <span class="number" data-metric="cleared">0</span>
+                        <span class="card-label">Badges turned green</span>
+                        <span class="trend success">Official approvals</span>
+                    </article>
+                    <article class="dashboard-card">
+                        <div class="dashboard-card-top"><h3>Rejected items</h3><span class="card-icon gray" aria-hidden="true">!</span></div>
+                        <span class="number" data-metric="flagged">0</span>
+                        <span class="card-label">Feedback to resolve</span>
+                        <span class="trend warning">Read the reason</span>
+                    </article>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="clearance">
+                <div class="clearance-panel">
+                    <div class="clearance-panel-header">
+                        <div>
+                            <p class="eyebrow">Automated progress tracking</p>
+                            <h2>My clearance checklist</h2>
+                            <p>Your checklist is generated automatically when you sign in.</p>
+                        </div>
+                        <span class="clearance-percentage" data-student-progress>0%</span>
+                    </div>
+                    <div class="progress-container" id="studentProgress" data-progress="0" role="progressbar" aria-label="Overall clearance progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div class="progress-bar" id="studentProgressBar"></div>
+                    </div>
+                    <div class="progress-labels">
+                        <span>Not started</span>
+                        <strong data-student-progress-label>0% complete</strong>
+                        <span>Fully cleared</span>
+                    </div>
+                    <div class="clearance-summary">
+                        <div class="clearance-summary-item"><strong data-summary-value="cleared">0</strong><span>Cleared</span></div>
+                        <div class="clearance-summary-item"><strong data-summary-value="pending">0</strong><span>Pending</span></div>
+                        <div class="clearance-summary-item"><strong data-summary-value="flagged">0</strong><span>Flagged</span></div>
+                    </div>
+                </div>
+
+                <div class="checklist-layout">
+                    <div class="checklist-panel" id="clearanceChecklist"></div>
+                    <aside class="content-panel quick-actions-panel">
+                        <div class="section-heading">
+                            <div><h2>Quick actions</h2><p>Keep your record moving.</p></div>
+                        </div>
+                        <div class="quick-actions">
+                            <div class="action-item" data-student-request-action><div><strong>Submit a request</strong><p>Send a document or information request.</p></div><button class="button button-primary button-small" type="button" data-open-request>Start</button></div>
+                            <div class="action-item"><div><strong>Update profile</strong><p>Keep your contact details current.</p></div><a class="button button-light button-small" href="#profile">Edit</a></div>
+                            <div class="action-item"><div><strong>View certificate</strong><p>Preview your printable certificate.</p></div><a class="button button-light button-small" href="certificates.html">Open</a></div>
+                            <div class="action-item"><div><strong>Find alumni</strong><p>Search the graduate directory.</p></div><a class="button button-light button-small" href="alumni.html">Open</a></div>
+                        </div>
+                        <div class="section-heading section-heading-spaced"><div><h3>Recent activity</h3></div></div>
+                        <div class="activity-list" id="studentActivity"></div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="requests">
+                <div class="content-panel">
+                    <div class="section-heading">
+                        <div>
+                            <h2>My clearance requests</h2>
+                            <p>Track requests submitted to the records office and receive their decisions here.</p>
+                        </div>
+                        <span class="status-review" id="studentRequestCount" role="status" aria-live="polite">0 requests</span>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <caption class="sr-only">Your clearance requests</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Details</th>
+                                    <th scope="col">Submitted</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentRequestBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="empty-state" id="studentRequestEmpty" hidden>
+                        <strong>No requests submitted yet.</strong>
+                        <p>Use Submit a request when you need help with a clearance item.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="profile">
+                <div class="content-panel">
+                    <div class="section-heading">
+                        <div><h2>My profile</h2><p>These details are used for official clearance communication.</p></div>
+                    </div>
+                    <form id="profileForm" method="post" action="" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full name</label>
+                                <input class="form-control" id="fullName" name="fullName" type="text" maxlength="100" required>
+                                <span class="form-error">Enter your full name.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentNumber">Registration number</label>
+                                <input class="form-control" id="studentNumber" name="studentNumber" type="text" readonly>
+                                <span class="form-help">Your registration number cannot be edited here.</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input class="form-control" id="email" name="email" type="email" maxlength="120" required>
+                                <span class="form-error">Enter a valid email address.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone number</label>
+                                <input class="form-control" id="phone" name="phone" type="tel" maxlength="30" required>
+                                <span class="form-error">Enter your phone number.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="degree">Degree programme</label>
+                            <select class="form-control" id="degree" name="degree" required>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Economics">Economics</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Biochemistry">Biochemistry</option>
+                            </select>
+                            <span class="form-error">Choose your degree programme.</span>
+                        </div>
+                        <p class="form-help" id="profileMessage" aria-live="polite"></p>
+                        <div class="form-actions">
+                            <button class="button button-primary" type="submit">Save profile</button>
+                            <a class="button button-light" href="certificates.html">Certificate preview</a>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal" id="requestModal" role="dialog" aria-modal="true" aria-labelledby="requestModalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div><h2 id="requestModalTitle">Submit a clearance request</h2><p>Tell the records office what you need to complete.</p></div>
+                <button class="icon-button modal-close" type="button" data-close-modal aria-label="Close request form">×</button>
+            </div>
+            <form id="requestForm" method="post" action="" novalidate>
+                <div class="form-group">
+                    <label for="requestType">Request type</label>
+                    <select class="form-control" id="requestType" name="requestType" required>
+                        <option value="">Select a request type</option>
+                        <option value="financial">Financial record</option>
+                        <option value="identity">Identity document</option>
+                        <option value="academic">Academic record</option>
+                        <option value="other">Other clearance item</option>
+                    </select>
+                    <span class="form-error">Choose a request type.</span>
+                </div>
+                <div class="form-group">
+                    <label for="requestDetails">Details</label>
+                    <textarea class="form-control" id="requestDetails" name="requestDetails" maxlength="1000" placeholder="Explain what you need to submit." required></textarea>
+                    <span class="form-error">Add a short description.</span>
+                </div>
+                <div class="form-group">
+                    <label for="requestFile">Supporting document</label>
+                    <input class="form-control file-control" id="requestFile" name="requestFile" type="file" accept=".pdf,.jpg,.jpeg,.png">
+                    <span class="file-name"></span>
+                    <span class="form-error">Choose a PDF, JPG, or PNG file smaller than 5 MB.</span>
+                    <span class="form-help">Optional. PDF, JPG, or PNG files are accepted.</span>
+                </div>
+                <p class="form-help" id="requestMessage" aria-live="polite"></p>
+                <div class="modal-footer">
+                    <button class="button button-light" type="button" data-close-modal>Cancel</button>
+                    <button class="button button-primary" type="submit">Send request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+/* Login page */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+    background-color: whitesmoke;
+}
+
+.login-box {
+    width: 400px;
+    max-width: 90%;
+    padding: 35px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 5px 20px lightgray;
+}
+
+.login-logo {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-logo .brand-text {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.login-logo p {
+    margin-bottom: 0;
+    color: darkslategray;
+    font-size: 0.85rem;
+}
+
+.login-title {
+    margin-bottom: 8px;
+    color: indigo;
+    text-align: center;
+}
+
+.login-subtitle {
+    margin-bottom: 25px;
+    color: darkslategray;
+    text-align: center;
+}
+
+.login-form .button {
+    margin-top: 5px;
+}
+
+.auth-switch {
+    margin: 18px 0 12px;
+    text-align: center;
+}
+
+.auth-switch p {
+    margin: 0 0 4px;
+    color: darkslategray;
+    font-size: 0.85rem;
+}
+
+.login-footer {
+    margin: 22px 0 0;
+    color: darkslategray;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.login-footer a {
+    color: indigo;
+    font-weight: bold;
+}
+
+.login-back {
+    display: block;
+    margin-top: 20px;
+    color: indigo;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.login-back:hover {
+    color: purple;
+    text-decoration: underline;
+}
+
+.demo-note {
+    margin-top: 20px;
+    padding: 10px 12px;
+    border-left: 4px solid yellow;
+    background-color: lightyellow;
+    color: darkslategray;
+    font-size: 0.8rem;
+}
+
+.login-box-wide {
+    width: 520px;
+}
+
+.login-reset-toggle {
+    display: block;
+    margin: 15px auto 0;
+}
+
+.reset-panel,
+.register-panel,
+.verification-panel {
+    margin-top: 20px;
+    padding: 18px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    background-color: whitesmoke;
+}
+
+.reset-panel h2,
+.register-panel h2,
+.verification-panel h2 {
+    margin-bottom: 6px;
+    color: indigo;
+    font-size: 1.2rem;
+}
+
+.reset-panel > p,
+.register-panel > p,
+.verification-panel > p {
+    margin-bottom: 18px;
+    color: darkslategray;
+    font-size: 0.85rem;
+}
+
+.verification-panel .otp-label {
+    display: block;
+    margin-bottom: 6px;
+    color: darkslategray;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.verification-panel .otp-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 4px 0 10px;
+}
+
+.verification-panel .otp-input {
+    width: 42px;
+    height: 48px;
+    padding: 0;
+    border: 1px solid gray;
+    border-radius: 6px;
+    background-color: white;
+    color: indigo;
+    font-family: "Courier New", monospace;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.verification-panel .otp-input:focus {
+    border-color: indigo;
+    outline: 2px solid mediumpurple;
+    outline-offset: 1px;
+}
+
+.verification-panel .otp-input:disabled {
+    background-color: whitesmoke;
+    color: dimgray;
+}
+
+.form-group.has-error .otp-input {
+    border-color: crimson;
+}
+
+.register-form .button {
+    margin-top: 5px;
+}
+
+.demo-accounts {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid lightgray;
+}
+
+.demo-accounts summary {
+    color: indigo;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.demo-account-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+}

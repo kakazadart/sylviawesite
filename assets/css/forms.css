@@ -1,0 +1,121 @@
+/* Simple readable forms */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: darkslategray;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background-color: white;
+    color: darkslategray;
+}
+
+.form-control:focus {
+    outline: 2px solid orange;
+    outline-offset: 1px;
+    border-color: indigo;
+}
+
+.form-control[aria-invalid="true"] {
+    border-color: red;
+}
+
+.form-control::placeholder {
+    color: darkslategray;
+}
+
+textarea.form-control {
+    min-height: 110px;
+    resize: vertical;
+}
+
+select.form-control {
+    cursor: pointer;
+}
+
+.form-help {
+    display: block;
+    margin-top: 6px;
+    color: darkslategray;
+    font-size: 0.8rem;
+}
+
+.form-error {
+    display: none;
+    margin-top: 6px;
+    color: red;
+    font-size: 0.8rem;
+}
+
+.form-group.has-error .form-error {
+    display: block;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.checkbox-group input {
+    margin-top: 5px;
+}
+
+.checkbox-group label {
+    font-weight: normal;
+}
+
+.input-with-action {
+    position: relative;
+}
+
+.input-with-action .form-control {
+    padding-right: 75px;
+}
+
+.input-action {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    border: 0;
+    background-color: white;
+    color: indigo;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transform: translateY(-50%);
+}
+
+.file-control {
+    padding: 9px;
+}
+
+.file-name {
+    display: block;
+    margin-top: 7px;
+    color: darkslategray;
+    font-size: 0.8rem;
+}

@@ -1,0 +1,111 @@
+/* Main university header */
+.header {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 25px;
+    background-color: indigo;
+    color: white;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+}
+
+.header-logo a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.brand-text {
+    color: yellow;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.header-title {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.header-caption {
+    display: block;
+    color: whitesmoke;
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-user {
+    color: whitesmoke;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.header-user strong {
+    display: block;
+    color: white;
+}
+
+.menu-button {
+    display: none;
+    border: 1px solid yellow;
+    border-radius: 5px;
+    padding: 9px 13px;
+    background-color: indigo;
+    color: white;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background-color: purple;
+}
+
+.public-header {
+    position: relative;
+    z-index: 10;
+}
+
+.public-navigation {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.public-navigation a {
+    color: white;
+    font-weight: bold;
+}
+
+.public-navigation a:hover {
+    color: yellow;
+}
+
+.public-navigation .navigation-login {
+    padding: 9px 15px;
+    border: 1px solid yellow;
+    border-radius: 5px;
+    color: yellow;
+}
+
+.public-navigation .navigation-login:hover {
+    background-color: yellow;
+    color: indigo;
+}

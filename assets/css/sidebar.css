@@ -1,0 +1,68 @@
+/* Student dashboard sidebar */
+.sidebar {
+    width: 260px;
+    min-height: 100vh;
+    padding: 20px 10px;
+    background-color: indigo;
+    color: white;
+}
+
+.sidebar-heading {
+    padding: 10px 15px 20px;
+    color: cyan;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.sidebar-navigation a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 5px;
+    padding: 12px 15px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar-navigation a:hover {
+    background-color: purple;
+}
+
+.sidebar-navigation a.active {
+    background-color: purple;
+    color: white;
+}
+
+.nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    color: cyan;
+    font-weight: bold;
+}
+
+.sidebar-navigation a.active .nav-icon {
+    color: white;
+}
+
+.sidebar-footer {
+    margin: 30px 15px 0;
+    padding-top: 20px;
+    border-top: 1px solid purple;
+    color: whitesmoke;
+    font-size: 0.8rem;
+}
+
+.sidebar-footer strong {
+    display: block;
+    margin-bottom: 5px;
+    color: cyan;
+}
+
+.sidebar-overlay {
+    display: none;
+}

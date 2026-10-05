@@ -1,0 +1,289 @@
+/* Public home page: the hero "Pay now" card sits below the "Learn more" button */
+.hero-payment {
+    max-width: 960px;
+    margin: 34px auto 0;
+    padding: 26px 28px 28px;
+    border-radius: 12px;
+    background-color: white;
+    color: #1f2937;
+    text-align: left;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.hero-payment h2 {
+    margin: 0 0 8px;
+    font-size: 1.35rem;
+    color: #1f2937;
+}
+
+.hero-payment p {
+    margin: 0 0 18px;
+    color: #5b6b80;
+    font-size: 0.95rem;
+}
+
+.header-payment-link {
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .header-payment-link {
+        display: inline-block;
+        color: yellow;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 560px) {
+    .hero-payment {
+        margin: 26px auto 0;
+        padding: 20px 16px 22px;
+    }
+}
+
+/* Fee balances and M-Pesa payment form */
+.payments-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    align-items: start;
+}
+
+.payments-grid-wide {
+    display: grid;
+    gap: 24px;
+}
+
+.paybill-panel {
+    background-color: #f7f9fc;
+    border: 1px solid #dde4ee;
+    border-radius: 10px;
+    padding: 16px 18px;
+}
+
+.paybill-panel h3 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+}
+
+.paybill-rows {
+    margin: 12px 0 0;
+    display: grid;
+    gap: 8px;
+}
+
+.paybill-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.9rem;
+}
+
+.paybill-row dt {
+    color: #5b6b80;
+    margin: 0;
+}
+
+.paybill-row dd {
+    margin: 0;
+    font-weight: bold;
+    text-align: right;
+    word-break: break-word;
+}
+
+.paybill-number {
+    font-family: "Consolas", "Courier New", monospace;
+    letter-spacing: 1px;
+}
+
+.payment-form .form-group {
+    margin-bottom: 16px;
+}
+
+.payment-modal-content {
+    width: 560px;
+}
+
+.payment-modal-content .paybill-panel {
+    margin-top: 18px;
+}
+
+.payment-message {
+    display: block;
+    margin: 12px 0 0;
+    color: #5b6b80;
+    font-size: 0.85rem;
+}
+
+.payment-message.is-error {
+    color: #b3261e;
+    font-weight: bold;
+}
+
+.amount-field {
+    position: relative;
+}
+
+.amount-field .form-control {
+    padding-left: 46px;
+}
+
+.amount-prefix {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #5b6b80;
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.form-hint {
+    margin: 4px 0 0;
+    color: #5b6b80;
+    font-size: 0.85rem;
+}
+
+.pending-prompt {
+    margin-top: 18px;
+    border-left: 4px solid #f0b429;
+    background-color: #fff8e6;
+    border-radius: 8px;
+    padding: 14px 16px;
+}
+
+.pending-prompt h3 {
+    margin: 0 0 6px;
+    font-size: 0.98rem;
+}
+
+.pending-prompt p {
+    margin: 0 0 6px;
+}
+
+.checkout-reference {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 0.8rem;
+    word-break: break-all;
+    color: #5b6b80;
+}
+
+.balance-amount {
+    font-weight: bold;
+}
+
+/* What each charge is for, so a payment is never just an amount */
+.fee-purpose {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background-color: #eef2ff;
+    color: #3730a3;
+    font-size: 0.75rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.fee-purpose-tuition {
+    background-color: #eef2ff;
+    color: #3730a3;
+}
+
+.fee-purpose-textbooks {
+    background-color: #ecfdf5;
+    color: #065f46;
+}
+
+.fee-purpose-accommodation {
+    background-color: #fff7ed;
+    color: #9a3412;
+}
+
+.fee-purpose-library {
+    background-color: #fdf2f8;
+    color: #9d174d;
+}
+
+.fee-purpose-other {
+    background-color: #f1f5f9;
+    color: #334155;
+}
+
+/* The fee table carries an action column, so it scrolls instead of squashing
+   on a narrow screen. */
+.payments-grid .table-wrapper {
+    overflow-x: auto;
+}
+
+.balance-amount.settled {
+    color: #1f7a3d;
+}
+
+.balance-amount.outstanding {
+    color: #a3421f;
+}
+
+.receipt-cell {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 0.85rem;
+}
+
+.payment-note {
+    display: block;
+    color: #5b6b80;
+    font-size: 0.82rem;
+    margin-top: 4px;
+}
+
+.totals-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+}
+
+.totals-item span {
+    display: block;
+    color: #5b6b80;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.totals-item strong {
+    font-size: 1.25rem;
+}
+
+.totals-item strong.due {
+    color: #a3421f;
+}
+
+.spinner-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #5b6b80;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 980px) {
+    .payments-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media print {
+    .payments-grid,
+    .form-actions,
+    .pending-prompt,
+    .pay-now-button {
+        display: none;
+    }
+}

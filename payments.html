@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kiriri Women's University of Science &amp; Technology fee statement and M-Pesa payment">
+    <title>My Fees | Kiriri Women's University of Science &amp; Technology Clear Path</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    <script src="assets/js/state.js?v=2" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/auth.js?v=2" defer></script>
+    <script src="assets/js/sidebar.js" defer></script>
+    <script src="assets/js/validation.js" defer></script>
+    <script src="assets/js/forms.js?v=2" defer></script>
+    <script src="assets/js/payments.js" defer></script>
+</head>
+<body class="dashboard-page" data-protected-page="student">
+    <a class="skip-link" href="#mainContent">Skip to main content</a>
+
+    <header class="header">
+        <div class="header-logo">
+            <a href="dashboard.html" aria-label="Student dashboard home">
+                <span class="brand-text" aria-hidden="true">KIRIRI</span>
+                <span>
+                    <span class="header-title">Clear Path Student Portal</span>
+                    <span class="header-caption" data-current-role>Student fees</span>
+                </span>
+            </a>
+        </div>
+        <div class="header-actions">
+            <div class="header-user">
+                <strong data-current-name>Student</strong>
+                <span data-current-id>Student account</span>
+            </div>
+            <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="sidebar">
+                <span aria-hidden="true">☰</span>
+                <span class="sr-only">Open navigation</span>
+            </button>
+            <button class="button button-light button-small" id="logoutButton" type="button">Log out</button>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <p class="sidebar-heading">Student workspace</p>
+            <nav class="sidebar-navigation" aria-label="Student navigation">
+                <a href="dashboard.html#overview"><span class="nav-icon" aria-hidden="true">O</span>Overview</a>
+                <a href="dashboard.html#clearance"><span class="nav-icon" aria-hidden="true">C</span>My checklist</a>
+                <a class="active" href="payments.html" aria-current="page"><span class="nav-icon" aria-hidden="true">P</span>My fees</a>
+                <a href="dashboard.html#requests"><span class="nav-icon" aria-hidden="true">I</span>My requests</a>
+                <a href="dashboard.html#profile"><span class="nav-icon" aria-hidden="true">P</span>My profile</a>
+                <a href="alumni.html"><span class="nav-icon" aria-hidden="true">D</span>Alumni directory</a>
+            </nav>
+            <div class="sidebar-footer">
+                <strong>Need help?</strong>
+                <p>Contact the Finance Office if a payment does not appear on your statement.</p>
+            </div>
+        </aside>
+        <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+        <main class="main-content" id="mainContent">
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">Fee statement</p>
+                    <h1>My fees and payments</h1>
+                    <p>Check what you owe, then press <strong>Pay now</strong> on a fee to open the M-Pesa payment form.</p>
+                </div>
+                <button class="button button-secondary" id="refreshFees" type="button">Refresh</button>
+            </div>
+
+            <div class="content-panel" style="margin-bottom: 24px;">
+                <div class="section-heading">
+                    <h2>Balance summary</h2>
+                    <span class="status-review" id="environmentBadge">Checking M-Pesa</span>
+                </div>
+                <div class="totals-row">
+                    <div class="totals-item">
+                        <span>Total due</span>
+                        <strong id="totalDue">KSh 0.00</strong>
+                    </div>
+                    <div class="totals-item">
+                        <span>Total paid</span>
+                        <strong id="totalPaid">KSh 0.00</strong>
+                    </div>
+                    <div class="totals-item">
+                        <span>Outstanding</span>
+                        <strong class="due" id="totalOutstanding">KSh 0.00</strong>
+                    </div>
+                </div>
+                <p class="form-help">Registration number: <strong id="feeIdentifier">—</strong></p>
+            </div>
+
+            <div class="payments-grid">
+                <div class="payments-grid-wide">
+                    <div class="content-panel">
+                        <div class="section-heading">
+                            <h2>Fee balances</h2>
+                        </div>
+                        <div class="spinner-row" id="balanceLoading">
+                            <span>Loading your fee statement...</span>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption class="sr-only">Outstanding fee balances by category</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Fee</th>
+                                        <th scope="col">Purpose</th>
+                                        <th scope="col">Amount due</th>
+                                        <th scope="col">Amount paid</th>
+                                        <th scope="col">Outstanding</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="balanceBody"></tbody>
+                            </table>
+                        </div>
+                        <div class="empty-state" id="balanceEmpty" hidden>
+                            <strong>No fee balances on record</strong>
+                            <p>Once the Finance Office posts your bill it will appear here.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-panel">
+                        <div class="section-heading">
+                            <h2>Payment history</h2>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption class="sr-only">Your recent M-Pesa payments</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Fee</th>
+                                        <th scope="col">Purpose</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Receipt</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="paymentBody"></tbody>
+                            </table>
+                        </div>
+                        <div class="empty-state" id="paymentEmpty" hidden>
+                            <strong>No payments yet</strong>
+                            <p>Payments you make with M-Pesa will be listed here.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payments-grid-wide">
+                    <div class="content-panel">
+                        <div class="section-heading">
+                            <h2>Pay with M-Pesa</h2>
+                        </div>
+                        <p>The payment form opens when you choose <strong>Pay now</strong>, either on a fee above or on the largest fee you still owe.</p>
+                        <p class="payment-message" id="feesMessage" role="status" aria-live="polite"></p>
+                        <div class="form-actions">
+                            <button class="button button-primary" id="payOutstandingButton" type="button">Pay now</button>
+                        </div>
+                    </div>
+
+                    <div class="paybill-panel">
+                        <h3>All paybill numbers</h3>
+                        <dl class="paybill-rows" id="paybillList"></dl>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal" id="paymentModal" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle" aria-hidden="true">
+        <div class="modal-content payment-modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 id="paymentModalTitle">Pay with M-Pesa</h2>
+                    <p id="paymentModalSubtitle">Check the fee and amount, then confirm the prompt on your phone.</p>
+                </div>
+                <button class="icon-button modal-close" type="button" data-close-payment aria-label="Close payment form">&times;</button>
+            </div>
+
+            <div class="notification warning" id="paymentUnavailable" hidden>
+                <div><p>Payment is unavailable</p><small id="paymentUnavailableReason"></small></div>
+            </div>
+
+            <form class="payment-form" id="paymentForm" method="post" action="" novalidate>
+                <div class="form-group">
+                    <label for="feeSelect">Fee to pay</label>
+                    <select class="form-control" id="feeSelect" name="feeSelect" required>
+                        <option value="">Select a fee to pay</option>
+                    </select>
+                    <span class="form-error">Choose a fee to pay.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount (KES)</label>
+                    <div class="amount-field">
+                        <span class="amount-prefix" aria-hidden="true">KSh</span>
+                        <input class="form-control" id="amount" name="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="0.00" required>
+                    </div>
+                    <span class="form-error">Enter an amount of at least 1.</span>
+                    <span class="form-help">You can pay in full or in part, up to the outstanding balance.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">M-Pesa phone number</label>
+                    <input class="form-control" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="07XXXXXXXX" required>
+                    <span class="form-error">Enter a valid M-Pesa phone number.</span>
+                    <span class="form-help">The prompt is sent to this number. Use the SIM with your M-Pesa account.</span>
+                </div>
+
+                <p class="payment-message" id="paymentMessage" role="status" aria-live="polite"></p>
+
+                <div class="modal-footer">
+                    <button class="button button-light" type="button" data-close-payment>Cancel</button>
+                    <button class="button button-primary" id="submitPayment" type="submit">Send M-Pesa prompt</button>
+                </div>
+            </form>
+
+            <div class="paybill-panel" id="paybillDetail" hidden>
+                <h3>Payment for</h3>
+                <p class="form-help">Check the purpose below, then pay by M-Pesa or at any M-Pesa agent.</p>
+                <dl class="paybill-rows">
+                    <div class="paybill-row">
+                        <dt>Purpose</dt>
+                        <dd id="selectedPurpose">&mdash;</dd>
+                    </div>
+                    <div class="paybill-row">
+                        <dt>Paybill number</dt>
+                        <dd class="paybill-number" id="selectedPaybill">&mdash;</dd>
+                    </div>
+                    <div class="paybill-row">
+                        <dt>Account number</dt>
+                        <dd class="paybill-number" id="selectedAccount">&mdash;</dd>
+                    </div>
+                    <div class="paybill-row">
+                        <dt>Account name</dt>
+                        <dd id="selectedAccountName">&mdash;</dd>
+                    </div>
+                </dl>
+                <p class="form-help" id="paybillHint" hidden>This paybill is not live yet. Contact the Finance Office before paying at an agent.</p>
+            </div>
+
+            <div class="pending-prompt" id="pendingPrompt" hidden>
+                <h3>Check your phone</h3>
+                <p>Enter your M-Pesa PIN to authorise this payment. This page updates by itself once M-Pesa confirms.</p>
+                <p class="checkout-reference" id="checkoutReferenceWrap" hidden>Reference: <span id="checkoutReference"></span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

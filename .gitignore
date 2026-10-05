@@ -1,0 +1,16 @@
+# Backend stays off GitHub. PHP runs on our own host, not on Pages.
+api/
+
+# Local environment overrides and secrets
+config.php
+config.local.php
+
+# Logs and runtime output
+*.log
+error_log
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/

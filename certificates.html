@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kiriri Women's University of Science &amp; Technology student clearance certificate preview">
+    <title>Certificate Preview | Kiriri Women's University of Science &amp; Technology Clearance Portal</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    <script src="assets/js/state.js?v=2" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/auth.js?v=2" defer></script>
+    <script src="assets/js/certificate.js" defer></script>
+</head>
+<body class="certificate-page" data-protected-page="certificate">
+    <main>
+        <div class="notification warning certificate-session-warning" id="sessionWarning" hidden>
+            <div><p>Session warning</p><small>You will be signed out soon because of inactivity.</small></div>
+        </div>
+        <div class="certificate-toolbar">
+            <div>
+                <p class="eyebrow">Student record</p>
+                <h1>Certificate preview</h1>
+                <p>Review the details before printing your final certificate.</p>
+            </div>
+            <div class="form-actions">
+                <a class="button button-light" href="dashboard.html">Back to dashboard</a>
+                <button class="button button-secondary print-button" id="certificatePrintButton" type="button">Print certificate</button>
+            </div>
+        </div>
+
+        <article class="certificate" aria-label="Student clearance certificate">
+            <div class="certificate-seal" aria-hidden="true">COMPLETE</div>
+            <p class="certificate-kicker">Kiriri Women's University of Science &amp; Technology</p>
+            <h1 class="certificate-title">Certificate of Clearance</h1>
+            <p class="certificate-copy">This certificate is presented to</p>
+            <span class="certificate-name" id="certificateName">Student name</span>
+            <p class="certificate-description" id="certificateDescription">Your certificate details will appear here after signing in.</p>
+            <div class="certificate-footer">
+                <div class="signature-line">
+                    Student Records Officer
+                </div>
+                <div class="certificate-number">
+                    Certificate number<br>
+                    <strong id="certificateNumber">KIRIRI-CLEARANCE-0000</strong>
+                </div>
+            </div>
+        </article>
+
+        <p class="certificate-status status-review" id="certificateStatus" role="status" aria-live="polite">Clearance preview</p>
+        <p class="certificate-note" id="certificateNote" aria-live="polite">Sign in to view your certificate details.</p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,126 @@
+/* Printable certificate design */
+.certificate-page {
+    min-height: 100vh;
+    padding: 30px;
+    background-color: whitesmoke;
+}
+
+.certificate-session-warning {
+    max-width: 900px;
+    margin: 0 auto 18px;
+}
+
+.certificate-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto 20px;
+}
+
+.certificate-toolbar h1 {
+    margin-bottom: 5px;
+    color: indigo;
+}
+
+.certificate-toolbar p {
+    margin-bottom: 0;
+    color: darkslategray;
+}
+
+.certificate {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px;
+    border: 10px solid indigo;
+    background-color: white;
+    color: darkslategray;
+    text-align: center;
+    box-shadow: 0 5px 20px lightgray;
+}
+
+.certificate-seal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 88px;
+    margin-bottom: 18px;
+    border: 3px solid orange;
+    border-radius: 50%;
+    color: orange;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.certificate-kicker {
+    margin-bottom: 10px;
+    color: orange;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.certificate-title {
+    margin-bottom: 22px;
+    color: indigo;
+    font-size: 2.2rem;
+}
+
+.certificate-copy {
+    max-width: 600px;
+    margin: 0 auto 25px;
+    color: darkslategray;
+    font-size: 1.1rem;
+}
+
+.certificate-name {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 0 20px 8px;
+    border-bottom: 2px solid yellow;
+    color: indigo;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.certificate-description {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    color: darkslategray;
+}
+
+.certificate-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.signature-line {
+    flex: 1;
+    padding-top: 10px;
+    border-top: 1px solid darkslategray;
+    color: darkslategray;
+    font-size: 0.85rem;
+}
+
+.certificate-number {
+    color: darkslategray;
+    font-size: 0.8rem;
+    text-align: right;
+}
+
+.certificate-note {
+    max-width: 900px;
+    margin: 18px auto 0;
+    color: darkslategray;
+    font-size: 0.85rem;
+    text-align: center;
+}
